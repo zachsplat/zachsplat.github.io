@@ -42,9 +42,7 @@ Troubleshooting notes, each with the exact error string:
 
 ## Price
 
-- $49 a month: monitors on every notification channel the Monitor supports, import of your exported configuration, one relayer signing with your key, 25,000 executions a month.
-- $199 a month: 250,000 executions, three chains, treasury and protocol-owned-liquidity reports.
-- $0.01 per execution above the plan. First month free.
+$49 a month per team: monitors on every notification channel the Monitor supports, import of your exported configuration, one relayer signing with your key. First month free. More chains, heavy execution volume or a monthly treasury statement are priced per team; ask.
 
 No self-serve signup yet. I set the stack up with you over a chat or a call, from your exported files.
 
