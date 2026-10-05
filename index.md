@@ -5,7 +5,7 @@ title: Hosted OpenZeppelin Monitor and Relayer
 
 # Hosted OpenZeppelin Monitor and Relayer, with the key in your own KMS
 
-For small teams that lost Defender on 2026-07-01 and do not want to run two Rust services, Redis and metrics themselves. I'm setting this up now, one team at a time; nothing below is a promise about scale.
+For small teams that lost Defender on 2026-07-01 and do not want to run two Rust services, Redis and metrics themselves. I'm setting this up now, one team at a time.
 
 ## What you get
 
