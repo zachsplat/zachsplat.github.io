@@ -5,9 +5,9 @@ title: Hosted OpenZeppelin Monitor and Relayer
 
 # Hosted OpenZeppelin Monitor and Relayer, with the key in your own KMS
 
-For small teams that lost Defender on 2026-07-01 and do not want to run two Rust services, Redis and metrics themselves.
+For small teams that lost Defender on 2026-07-01 and do not want to run two Rust services, Redis and metrics themselves. I'm setting this up now, one team at a time; nothing below is a promise about scale.
 
-## What runs
+## What you get
 
 - OpenZeppelin Monitor 1.6.0 and Relayer 1.8.0, the unmodified images from Docker Hub, one isolated stack per team: own containers, own network, own Redis.
 - Your configuration files, unchanged: the monitors, triggers and networks Defender exported, or hand-written ones. You keep the files and can leave at any time with them.
@@ -50,7 +50,7 @@ No self-serve signup yet. I set the stack up with you over a chat or a call, fro
 
 ## What it is not
 
-Not OpenZeppelin, and not affiliated with them. Monitor and Relayer are OpenZeppelin's open-source programs (AGPL-3.0); I run them unmodified. This service has no audit, no SLA and no uptime history to show you, and it is one engineer. If you need those, run the programs yourself or ask OpenZeppelin about their hosted offering.
+Not OpenZeppelin, and not affiliated with them. Monitor and Relayer are OpenZeppelin's open-source programs (AGPL-3.0), used here unmodified. This service has no audit, no SLA and no uptime history to show you, and it is one engineer. If you need those, run the programs yourself or ask OpenZeppelin about their hosted offering.
 
 ## Contact
 
