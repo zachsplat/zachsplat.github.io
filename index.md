@@ -4,15 +4,17 @@ title: Hosted OpenZeppelin Monitor and Relayer
 description: "Nonceworks runs OpenZeppelin Monitor 1.6.0 and Relayer 1.8.0 for small teams that lost Defender. Your signing key stays in your own AWS KMS, Google Cloud KMS or Turnkey account. $49 a month, first month free."
 ---
 
-# Welcome
+# Hosted OpenZeppelin Monitor and Relayer, with the key in your own KMS.
 
-<p class="updated">Last updated 6 October 2026.</p>
+<p class="meta">Updated 2026-10-06</p>
 
 OpenZeppelin shut Defender down on July 1, 2026 and pointed everyone at the open-source Monitor and Relayer. They work. They are also two Rust services plus Redis that you now operate yourself, with a release every few weeks and a few nonce bugs that are still open. If you have one engineer and he has other things to do, that is a bad trade.
 
 Nonceworks runs them for you. Your configuration, the stock images, pinned versions, and a signing key that never leaves your own cloud account.
 
-<div class="note"><b>Who this is for:</b> teams of one to five engineers who had Defender monitors or relayers in production and do not want to babysit the replacement. If that is you, <a href="contact.html">send me what broke</a>.</div>
+<div class="callout"><p><b>Who this is for.</b> Teams of one to five engineers who had Defender monitors or relayers in production and do not want to babysit the replacement.</p></div>
+
+<a class="btn" href="contact.html">Send me what broke</a>
 
 ## In short
 
