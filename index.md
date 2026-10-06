@@ -1,4 +1,5 @@
 ---
+description: "Hosted OpenZeppelin Monitor 1.6.0 and Relayer 1.8.0 for small teams that lost Defender, with the signing key in your own AWS KMS, Google Cloud KMS or Turnkey account. $49 a month, first month free."
 layout: default
 title: Hosted OpenZeppelin Monitor and Relayer
 ---

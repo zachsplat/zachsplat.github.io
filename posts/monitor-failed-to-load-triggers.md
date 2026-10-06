@@ -1,4 +1,5 @@
 ---
+description: "OpenZeppelin Monitor exits with 'Failed to load triggers' when a secret source is spelled env instead of environment. The accepted values, the fix, and how to validate with --check."
 layout: default
 title: "Monitor: Failed to load triggers (secret source env vs environment)"
 ---

@@ -1,4 +1,5 @@
 ---
+description: "The exact AWS KMS calls the OpenZeppelin Relayer 1.8.0 aws_kms signer makes, the smallest IAM policy that satisfies them (kms:GetPublicKey and kms:Sign on one key), and how to revoke."
 layout: default
 title: "AWS KMS permissions for the OpenZeppelin Relayer"
 ---

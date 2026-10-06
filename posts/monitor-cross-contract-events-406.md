@@ -1,4 +1,5 @@
 ---
+description: "Does an OpenZeppelin Monitor event condition match when another contract made the call? Yes for events, no for functions; verified in the 1.6.0 filter source (issue #406)."
 layout: default
 title: "Monitor: do events from a monitored contract match when another contract made the call? (issue #406)"
 ---

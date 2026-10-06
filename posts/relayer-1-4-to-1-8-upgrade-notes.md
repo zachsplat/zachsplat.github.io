@@ -1,4 +1,5 @@
 ---
+description: "OpenZeppelin Relayer 1.4.0 to 1.8.0: what each release changed, what to check before upgrading (secret lengths, networks, Redis, rolling deploys, plugins), and the issues still open in 1.8.0."
 layout: default
 title: "OpenZeppelin Relayer 1.4.0 to 1.8.0: what changed, what to check, what is still open"
 ---

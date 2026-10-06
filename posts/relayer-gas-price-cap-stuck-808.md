@@ -1,4 +1,5 @@
 ---
+description: "Why OpenZeppelin Relayer logs 'bumped gas price does not meet minimum requirement, skipping resubmission' forever once a transaction reaches gas_price_cap (issue #808), reproduced on 1.8.0, and what to do."
 layout: default
 title: "Relayer: bumped gas price does not meet minimum requirement, skipping resubmission (gas_price_cap, issue #808)"
 ---

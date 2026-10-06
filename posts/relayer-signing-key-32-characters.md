@@ -1,4 +1,5 @@
 ---
+description: "OpenZeppelin Relayer 1.8.0 refuses to start with 'Signing key must be at least 32 characters long' or 'API_KEY must be at least 32 characters long'. Where the check lives and how to fix it."
 layout: default
 title: "Relayer: Signing key must be at least 32 characters long"
 ---
