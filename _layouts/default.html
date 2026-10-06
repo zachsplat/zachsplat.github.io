@@ -7,11 +7,23 @@
   <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
 </head>
 <body>
-  <p class="top"><b><a href="{{ '/' | relative_url }}">{{ site.brand }}</a></b> &middot; hosted OpenZeppelin Monitor and Relayer &middot; run by Zachary Alexander</p>
-  <hr>
-  {% if page.url != "/" %}<p><a href="{{ '/#notes' | relative_url }}">&larr; all notes</a></p>{% endif %}
-  {{ content }}
-  <hr>
-  <p class="foot">Not affiliated with OpenZeppelin. Monitor and Relayer are their open-source programs (AGPL-3.0); I run them as shipped. <a href="https://github.com/zachsplat">GitHub</a> &middot; <a href="https://t.me/zachary_alexander_dev">Telegram @zachary_alexander_dev</a> &middot; <a href="mailto:zachary_dev@icloud.com">zachary_dev@icloud.com</a></p>
+<div id="head">
+  <div class="site"><a href="{{ '/' | relative_url }}">{{ site.brand }}</a></div>
+  <div class="tag">Hosted OpenZeppelin Monitor and Relayer for small teams. Your signing key stays in your own KMS.</div>
+</div>
+<div id="nav">
+  <a href="{{ '/' | relative_url }}">Home</a><a href="{{ '/how-it-works.html' | relative_url }}">How it works</a><a href="{{ '/pricing.html' | relative_url }}">Pricing</a><a href="{{ '/notes.html' | relative_url }}">Notes</a><a href="{{ '/about.html' | relative_url }}">About</a><a href="{{ '/contact.html' | relative_url }}">Contact</a>
+</div>
+<div id="wrap">
+  <div id="main">
+    {{ content }}
+  </div>
+  <div id="side">
+    <div class="box"><div class="t">Latest notes</div><div class="c"><ul>{% for n in site.data.notes limit:5 %}<li><a href="{{ n.url | relative_url }}">{{ n.title }}</a></li>{% endfor %}</ul><p style="margin:6px 0 0"><a href="{{ '/notes.html' | relative_url }}">All notes &raquo;</a></p></div></div>
+    <div class="box"><div class="t">Versions run</div><div class="c">Monitor 1.6.0<br>Relayer 1.8.0<br><span class="updated">Pinned. Upgraded after testing against your config.</span></div></div>
+    <div class="box"><div class="t">Contact</div><div class="c">Telegram <a href="https://t.me/zachary_alexander_dev">@zachary_alexander_dev</a><br>Email <a href="mailto:zachary_dev@icloud.com">zachary_dev@icloud.com</a><br>GitHub <a href="https://github.com/zachsplat">zachsplat</a></div></div>
+  </div>
+  <div id="foot">&copy; 2026 {{ site.brand }}. Run by Zachary Alexander. Not affiliated with OpenZeppelin. Monitor and Relayer are OpenZeppelin's open-source programs (AGPL-3.0), run as shipped.</div>
+</div>
 </body>
 </html>

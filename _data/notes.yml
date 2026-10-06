@@ -1,0 +1,39 @@
+- title: "Relayer #843: a nonce too high jam that never heals"
+  url: /posts/relayer-nonce-too-high-jam-843.html
+  date: 2026-10-06
+  kind: repro
+  repo: https://github.com/zachsplat/relayer-843-repro
+- title: "Relayer #817: \"Nonce N consumed externally\", a mined transaction marked Failed"
+  url: /posts/relayer-nonce-consumed-externally-817.html
+  date: 2026-10-06
+  kind: repro
+  repo: https://github.com/zachsplat/relayer-817-repro
+- title: "Monitor #498: status Failure conditions never match on a busy chain"
+  url: /posts/monitor-status-failure-never-matches-498.html
+  date: 2026-10-06
+  kind: repro
+- title: "Relayer #808: \"bumped gas price does not meet minimum requirement\", a capped transaction that is never resent"
+  url: /posts/relayer-gas-price-cap-stuck-808.html
+  date: 2026-10-05
+  kind: repro
+  repo: https://github.com/zachsplat/relayer-808-repro
+- title: "Monitor #406: do events match when another contract made the call?"
+  url: /posts/monitor-cross-contract-events-406.html
+  date: 2026-10-05
+  kind: repro
+- title: "Relayer 1.4.0 to 1.8.0: what changed, what to check, what is still open"
+  url: /posts/relayer-1-4-to-1-8-upgrade-notes.html
+  date: 2026-10-05
+  kind: note
+- title: "Monitor: \"Failed to load triggers\" when a secret source says env instead of environment"
+  url: /posts/monitor-failed-to-load-triggers.html
+  date: 2026-10-05
+  kind: note
+- title: "Relayer: \"Signing key must be at least 32 characters long\""
+  url: /posts/relayer-signing-key-32-characters.html
+  date: 2026-10-05
+  kind: note
+- title: "AWS KMS permissions for the Relayer"
+  url: /posts/relayer-aws-kms-permissions.html
+  date: 2026-10-05
+  kind: note
