@@ -36,6 +36,7 @@ Reproductions:
 
 - [Relayer #808: "bumped gas price does not meet minimum requirement", a capped transaction that is never resent](posts/relayer-gas-price-cap-stuck-808.html) ([files](https://github.com/zachsplat/relayer-808-repro))
 - [Relayer #817: "Nonce N consumed externally", a mined transaction marked Failed](posts/relayer-nonce-consumed-externally-817.html) ([files](https://github.com/zachsplat/relayer-817-repro))
+- [Relayer #843: a nonce too high jam that never heals, the drift region full of Sent records](posts/relayer-nonce-too-high-jam-843.html) ([files](https://github.com/zachsplat/relayer-843-repro))
 - [Monitor #498: status Failure conditions that never match on a busy chain](posts/monitor-status-failure-never-matches-498.html)
 - [Monitor #406: do events still match when another contract made the call?](posts/monitor-cross-contract-events-406.html)
 
