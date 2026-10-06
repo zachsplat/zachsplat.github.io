@@ -48,7 +48,7 @@ Also present in the 1.8.0 image and docs although the CHANGELOG lists some under
 ## What is still open in 1.8.0 (verified 2026-10-04)
 
 - #843: nonce-too-high jam when the drift region is fully occupied by `Sent` records; the 1.7.0 recovery paths do not fire. Open since 2026-08-02, no maintainer reply.
-- #817: a transient empty receipt from a lagging RPC finalises a mined transaction as `Failed` (regression since 1.5.0). Open, no reply. PR #894 (open, maintainer-confirmed) fixes a related case where re-signed hashes were discarded on NonceTooLow/High.
+- #817: a transient empty receipt from a lagging RPC finalises a mined transaction as `Failed` (regression since 1.5.0). Open, no maintainer reply. The related lost-hash case (re-signed hashes discarded on NonceTooLow/High, PR #894) was taken over by the maintainers in PR #899 on 2026-10-05, which records the resubmission hash before broadcast; #894 was closed in its favour on 2026-10-06. #899 is open and not in a release.
 - #808: with `gas_price_cap` set, a transaction that reaches the cap during a spike and is evicted from the mempool is never resubmitted; `is_min_bumped` is false forever. I reproduced it on 1.8.0 on 2026-10-04 with anvil; the compose file, driver script and logs are at [zachsplat/relayer-808-repro](https://github.com/zachsplat/relayer-808-repro). If you use `gas_price_cap`, set it with headroom and watch for "bumped gas price does not meet minimum requirement".
 - #757: no workload-identity path for the GCP KMS signer (service-account key only). Azure got `workload_identity` in 1.6.0.
 
@@ -57,4 +57,4 @@ Also present in the 1.8.0 image and docs although the CHANGELOG lists some under
 1. Stand up 1.8.0 beside 1.4.0 with a copy of the config and a fresh Redis, pointed at a testnet or a fork, and replay your traffic pattern for a day; watch the four open issues above.
 2. Fix any config rejected by the stricter validation.
 3. Cut over with the old replica stopped first; keep the 1.4.0 image tag available for rollback; `RESET_STORAGE_ON_START` only with nothing in flight.
-4. Pin `v1.8.0` and subscribe to the release feed; the next release should carry #892.
+4. Pin `v1.8.0` and subscribe to the release feed; the next release should carry #892 and, if merged, #899.
