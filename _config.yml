@@ -1,6 +1,7 @@
-title: Zachary Alexander
+title: Nonceworks
 description: Hosted OpenZeppelin Monitor and Relayer for small teams, with the signing key in your own KMS
-theme: jekyll-theme-minimal
+brand: Nonceworks
+tagline: Hosted OpenZeppelin Monitor and Relayer. Your key never leaves your KMS.
 url: https://zachsplat.github.io
 plugins:
   - jekyll-sitemap

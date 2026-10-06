@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/mark.svg' | relative_url }}" type="image/svg+xml">
+</head>
+<body>
+  <header class="top">
+    <a class="wordmark" href="{{ '/' | relative_url }}"><img src="{{ '/assets/mark.svg' | relative_url }}" alt="" width="22" height="22">{{ site.brand }}</a>
+    <nav>
+      <a href="{{ '/#notes' | relative_url }}">Notes</a>
+      <a href="{{ '/#price' | relative_url }}">Price</a>
+      <a href="{{ '/#contact' | relative_url }}">Contact</a>
+    </nav>
+  </header>
+  <main>
+    {% if page.url != "/" %}<p class="small"><a href="{{ '/#notes' | relative_url }}">All notes</a></p>{% endif %}
+    {{ content }}
+  </main>
+  <footer>
+    <p>{{ site.brand }} is run by Zachary Alexander. Not affiliated with OpenZeppelin. Monitor and Relayer are OpenZeppelin's open-source programs (AGPL-3.0), run here unmodified.</p>
+    <p><a href="https://github.com/zachsplat">GitHub</a> · <a href="https://t.me/zachary_alexander_dev">Telegram</a> · <a href="mailto:zachary_dev@icloud.com">Email</a></p>
+  </footer>
+</body>
+</html>

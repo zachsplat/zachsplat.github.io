@@ -1,58 +1,64 @@
 ---
-description: "Hosted OpenZeppelin Monitor 1.6.0 and Relayer 1.8.0 for small teams that lost Defender, with the signing key in your own AWS KMS, Google Cloud KMS or Turnkey account. $49 a month, first month free."
 layout: default
 title: Hosted OpenZeppelin Monitor and Relayer
+description: "Hosted OpenZeppelin Monitor 1.6.0 and Relayer 1.8.0 for small teams that lost Defender, with the signing key in your own AWS KMS, Google Cloud KMS or Turnkey account. $49 a month, first month free."
 ---
 
-# Hosted OpenZeppelin Monitor and Relayer, with the key in your own KMS
+# Hosted OpenZeppelin Monitor and Relayer. Your key never leaves your KMS.
 
-For small teams that lost Defender on 2026-07-01 and do not want to run two Rust services, Redis and metrics themselves. I'm setting this up now, one team at a time.
+<p class="lead">Defender shut down on July 1. The open-source Monitor and Relayer that replaced it are good software and a chore to run: two Rust services, Redis, metrics, a release every few weeks, and a handful of open nonce bugs. I run them for small teams so that you don't have to.</p>
 
-## What you get
+<a class="cta" href="#contact">Send me what broke</a>
 
-- OpenZeppelin Monitor 1.6.0 and Relayer 1.8.0, the unmodified images from Docker Hub, one isolated stack per team: own containers, own network, own Redis.
-- Your configuration files, unchanged: the monitors, triggers and networks Defender exported, or hand-written ones. You keep the files and can leave at any time with them.
-- Pinned versions. I upgrade after testing the release against a copy of your configuration, and I publish what changed (the 1.4 to 1.8 notes below are the first).
-- Secrets (RPC URLs, Slack and webhook URLs, Telegram tokens, provider credentials) go into the stack's container environment only. They are never written into your configuration files.
+## How it works
 
-## Your key stays in your KMS
+You send me the configuration Defender exported, or one you wrote by hand. I bring it up as its own stack, pinned to the current release (Monitor 1.6.0, Relayer 1.8.0), on the unmodified images from Docker Hub. Nothing is shared with another team. Your RPC URLs, Slack and webhook URLs, Telegram tokens and provider credentials go into that stack's container environment and nowhere else; they are never written into your files.
 
-The Relayer signs with a key that lives in your AWS KMS, Google Cloud KMS or Turnkey account. I receive a credential that can sign with that one key and nothing else, and you revoke it in your own console. I never hold key material and never hold funds; you fund the relayer address.
+When a release ships, I test it against a copy of your configuration before touching anything, and I publish what changed. The [1.4 to 1.8 notes](posts/relayer-1-4-to-1-8-upgrade-notes.html) below are the first of those.
+
+The files stay yours. If you leave, you take the same configuration and run it anywhere.
+
+## The key stays yours
+
+The Relayer signs through your own AWS KMS, Google Cloud KMS or Turnkey account. What I receive is a credential that can sign with one key and do nothing else. Revoke it in your console and the relayer stops at the next signature. I never hold key material, and I never hold funds; you fund the relayer address yourself, after I tell you what it is.
 
 What you grant, exactly:
 
-- AWS KMS: `kms:GetPublicKey` and `kms:Sign` on one key ARN (key spec `ECC_SECG_P256K1` for EVM). Full policy and revocation steps: [AWS KMS permissions for the Relayer](posts/relayer-aws-kms-permissions.html).
-- Google Cloud KMS: `roles/cloudkms.signer` and `roles/cloudkms.viewer` bound to one key (HSM, Elliptic Curve secp256k1 SHA256 digest), through a service-account key. Relayer 1.8.0 has no workload-identity path for GCP (issue #757), so a service-account key is the only option today.
-- Turnkey: an API user whose policy allows only `ACTIVITY_TYPE_SIGN_RAW_PAYLOAD_V2` on one private key id. The key never leaves Turnkey's enclave.
+- AWS KMS: `kms:GetPublicKey` and `kms:Sign` on one key ARN, key spec `ECC_SECG_P256K1`. [The full policy and the revocation steps.](posts/relayer-aws-kms-permissions.html)
+- Google Cloud KMS: `roles/cloudkms.signer` and `roles/cloudkms.viewer` on one HSM secp256k1 key, through a service-account key. Relayer 1.8.0 has no workload-identity path for GCP yet (issue #757).
+- Turnkey: an API user whose policy allows only `ACTIVITY_TYPE_SIGN_RAW_PAYLOAD_V2` on one private key. The key never leaves the enclave.
 
-Revoking any of these stops the relayer at the next signature. I will tell you the derived address before you fund it.
+## Work in the open {#notes}
 
-## Work in the open
+I would rather show work than make claims. Everything below was run against the real 1.6.0 and 1.8.0 releases this week, and each page carries the exact error string so that it turns up when you search for it.
+
+Reproductions:
+
+- [Relayer #808: "bumped gas price does not meet minimum requirement", a capped transaction that is never resent](posts/relayer-gas-price-cap-stuck-808.html) ([files](https://github.com/zachsplat/relayer-808-repro))
+- [Relayer #817: "Nonce N consumed externally", a mined transaction marked Failed](posts/relayer-nonce-consumed-externally-817.html) ([files](https://github.com/zachsplat/relayer-817-repro))
+- [Monitor #498: status Failure conditions that never match on a busy chain](posts/monitor-status-failure-never-matches-498.html)
+- [Monitor #406: do events still match when another contract made the call?](posts/monitor-cross-contract-events-406.html)
+
+Operating notes:
 
 - [Relayer 1.4.0 to 1.8.0: what changed, what to check, what is still open](posts/relayer-1-4-to-1-8-upgrade-notes.html)
-- [Reproduction of Relayer issue #808 on 1.8.0](https://github.com/zachsplat/relayer-808-repro): `gas_price_cap` leaves a transaction stuck after a spike.
-- [defender-action2plugin](https://github.com/zachsplat/defender-action2plugin): scaffold a Relayer plugin from a retired Defender Action, with the unmapped parts marked.
-
-Troubleshooting notes, each with the exact error string:
-
-- [Relayer: "bumped gas price does not meet minimum requirement, skipping resubmission" (gas_price_cap, issue #808)](posts/relayer-gas-price-cap-stuck-808.html)
-- [Monitor: "Failed to load triggers" when a secret source is spelled env instead of environment](posts/monitor-failed-to-load-triggers.html)
+- [Monitor: "Failed to load triggers" when a secret source says env instead of environment](posts/monitor-failed-to-load-triggers.html)
 - [Relayer: "Signing key must be at least 32 characters long"](posts/relayer-signing-key-32-characters.html)
-- [Monitor: do events from a monitored contract match when another contract made the call? (issue #406)](posts/monitor-cross-contract-events-406.html)
 - [AWS KMS permissions for the Relayer](posts/relayer-aws-kms-permissions.html)
-- [Monitor: status Failure conditions never match on a busy chain (issue #498)](posts/monitor-status-failure-never-matches-498.html)
-- [Relayer: "Nonce N consumed externally", a mined transaction marked Failed (issue #817)](posts/relayer-nonce-consumed-externally-817.html)
+- [defender-action2plugin](https://github.com/zachsplat/defender-action2plugin): turns a retired Defender Action into a Relayer plugin skeleton, with the parts that do not map marked for you.
 
-## Price
+## Price {#price}
 
-$49 a month per team: monitors on every notification channel the Monitor supports, import of your exported configuration, one relayer signing with your key. First month free. More chains, heavy execution volume or a monthly treasury statement are priced per team; ask.
+<div class="price"><strong>$49</strong><span>a month, per team. First month free.</span></div>
 
-No self-serve signup yet. I set the stack up with you over a chat or a call, from your exported files.
+That covers monitors on every channel the Monitor supports, your exported configuration imported, and one relayer signing with your key. More chains, serious execution volume, or a monthly treasury statement are priced per team; ask.
 
-## What it is not
+There is no signup form yet. I set the stack up with you, from your files, over a chat or a call.
 
-Not OpenZeppelin, and not affiliated with them. Monitor and Relayer are OpenZeppelin's open-source programs (AGPL-3.0), used here unmodified. This service has no audit, no SLA and no uptime history to show you, and it is one engineer. If you need those, run the programs yourself or ask OpenZeppelin about their hosted offering.
+## What this is not
 
-## Contact
+Not OpenZeppelin, and not affiliated with them. Not audited, no SLA, and no uptime chart to show you yet. One engineer. If any of that is a dealbreaker, the notes above will help you run the programs yourself, or ask OpenZeppelin about their hosted offering.
 
-Telegram [@zachary_alexander_dev](https://t.me/zachary_alexander_dev) or zachary_dev@icloud.com. Send the exported configuration or a description of what broke and I will tell you whether it maps.
+## Contact {#contact}
+
+Telegram [@zachary_alexander_dev](https://t.me/zachary_alexander_dev) or [zachary_dev@icloud.com](mailto:zachary_dev@icloud.com). Send the exported configuration, or a description of what broke, and I will tell you whether it maps.
