@@ -40,6 +40,7 @@ Troubleshooting notes, each with the exact error string:
 - [Relayer: "Signing key must be at least 32 characters long"](posts/relayer-signing-key-32-characters.html)
 - [Monitor: do events from a monitored contract match when another contract made the call? (issue #406)](posts/monitor-cross-contract-events-406.html)
 - [AWS KMS permissions for the Relayer](posts/relayer-aws-kms-permissions.html)
+- [Monitor: status Failure conditions never match on a busy chain (issue #498)](posts/monitor-status-failure-never-matches-498.html)
 
 ## Price
 
