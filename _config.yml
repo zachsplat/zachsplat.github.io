@@ -1,5 +1,9 @@
 title: Zachary Alexander
 description: Hosted OpenZeppelin Monitor and Relayer for small teams, with the signing key in your own KMS
 theme: jekyll-theme-minimal
+url: https://zachsplat.github.io
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
 exclude:
   - PUBLISH.md
