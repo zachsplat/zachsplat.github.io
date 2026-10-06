@@ -42,6 +42,7 @@ Troubleshooting notes, each with the exact error string:
 - [AWS KMS permissions for the Relayer](posts/relayer-aws-kms-permissions.html)
 - [Monitor: status Failure conditions never match on a busy chain (issue #498)](posts/monitor-status-failure-never-matches-498.html)
 - [Relayer: "Nonce N consumed externally", a mined transaction marked Failed (issue #817)](posts/relayer-nonce-consumed-externally-817.html)
+- [Relayer: a nonce too high jam that never heals, the drift region full of Sent records (issue #843)](posts/relayer-nonce-too-high-jam-843.html)
 
 ## Price
 
